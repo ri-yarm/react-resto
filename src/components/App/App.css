@@ -1,0 +1,18 @@
+body {
+  max-width: 1280px;
+  margin: 40px auto;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+
+
+.main {
+  width: 968px;
+  margin: 0 auto;
+  padding: 60px;
+}

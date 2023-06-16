@@ -1,0 +1,54 @@
+@import "../../variables.less";
+
+.form {
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+
+  &__group {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+
+    input {
+      padding: 5px;
+      border: none;
+      background: none;
+
+      font-size: 16px;
+      height: 30px;
+      border-radius: 8px;
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+
+  button {
+    background: @white;
+    color: @mainblue;
+    text-align: center;
+
+    height: 30px;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 18px;
+    border-radius: 8px;
+
+    &:hover {
+      background: @mainblue;
+      color: @white;
+    }
+
+    &:disabled {
+      background: gray;
+      cursor: default;
+      color: @white;
+    }
+  }
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  margin: 70px auto 36px;
+}
