@@ -1,27 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import svg from "../../assets/tutzing.svg";
 
-import styles from './Home.module.less'
+import styles from "./Home.module.less";
+
+import data from "../../assets/data.json";
+import Canvas from "../../components/Canvas";
 
 const Home = () => {
-  const navigate = useNavigate()
-  // емейл у меня как токен, я к тому же буду его использовать в разметке
-  const login = localStorage.getItem('login')
+  const navigate = useNavigate();
+  const login = localStorage.getItem('login');
+  const [dots, setDots] = useState(data);
 
   useEffect(() => {
-    // нет емейла? досвидания
-    // можно было добавить элемент высшего порядка, для переадреса
-    // но так как приложения не большое, можно просто перенаправлять
-    if(!login) {
-      return navigate('/login')
+    if (!login) {
+      return navigate('/login');
     }
-  }, [login])
-  
+  }, [login]);
+
+  function handleAddDot(newDot) {
+    setDots(prevDots => [...prevDots, newDot]);
+  }
+
+  function handleDeleteDot(index) {
+    setDots(prevDots => {
+      const newDots = [...prevDots];
+      newDots.splice(index, 1);
+      return newDots;
+    });
+  }
+
   return (
     <main className="main">
-      <h1 className={styles.title}>Добрый день {login}</h1>
-      <img src={svg} alt="" />
+      <h1 className={styles.title}>Добрый день, {login}!</h1>
+      <Canvas dots={dots} onAddDot={handleAddDot} onDeleteDot={handleDeleteDot} />
     </main>
   );
 };

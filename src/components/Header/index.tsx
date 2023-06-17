@@ -9,7 +9,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const signout = () => {
-    localStorage.removeItem("email");
+    localStorage.removeItem("login");
     navigate("/login");
   };
 
