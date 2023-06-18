@@ -1,21 +1,20 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-//@ts-nocheck
+// @ts-nocheck
 
-import { useRef, useEffect} from "react";
+import React, { useRef, useEffect, useMemo} from "react";
 import img from "../../assets/tutzing.svg";
 
 /* 
   ? я пытался найти библиотеку, что бы она уже умела рисовать точки и передвигать, но не нашёл.
-  до этого с канвас я работал мимолётно
   ! есть возможность добавлять точки, а удалять - нет
 */
 
 type CanvasProps = {
   dots: Array;
-  handleAddDot: () => {x, y, name}
+  handleAddDot: ({x, y, name}) => {x, y, name}
 }
 
-const Canvas: React.FC<CanvasProps> = ({ dots, handleAddDot }) => {
+const Canvas: React.FC<CanvasProps> = React.memo(({ dots, handleAddDot }) => {
   const canvasStats = { width: 800, height: 800 }
   const canvasRef = useRef(null);
 
@@ -73,6 +72,6 @@ const Canvas: React.FC<CanvasProps> = ({ dots, handleAddDot }) => {
         onClick={handleCanvasClick}
       />
   );
-};
+})
 
 export default Canvas;

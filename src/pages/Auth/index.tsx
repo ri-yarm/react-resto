@@ -5,16 +5,16 @@ import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
 import styles from "./Auth.module.less";
 
-/** 
+/**
  * * В тз говорилось не усложнять, но я не удержался и сделал чуть сложнее вход))
-  */
+ */
 const Auth = () => {
   const navigate = useNavigate();
 
   // ? кастомный хук валидации
   const { isValid, values, handleChange, errors } = useFormAndValidation();
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     navigate("/");
     // !!!! емейл в локальном хранилище будет у меня как токен входа и как приветсвие на главной странице
@@ -24,7 +24,12 @@ const Auth = () => {
   return (
     <main className="main">
       <h1 className={styles.title}>Войдите в аккаунт</h1>
-      <form action="#" className={styles.form} noValidate onSubmit={handleSubmit}>
+      <form
+        action="#"
+        className={styles.form}
+        noValidate
+        onSubmit={handleSubmit}
+      >
         <div className={styles.form__group}>
           <input
             type="text"

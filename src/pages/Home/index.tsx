@@ -34,9 +34,9 @@ const Home: React.FC = () => {
   }, [login, dots]);
 
   // добавляет в локальное хранилище весь массив dots при добавлении новой точки
-  const handleAddDot = (newDot) => {
+  const handleAddDot = (newDot: object) => {
     localStorage.removeItem("dotsClear");
-    setDots((prevDots) => {
+    setDots((prevDots: object[]) => {
       const newDots = [...prevDots, newDot];
       localStorage.setItem("dots", JSON.stringify(newDots));
       return newDots;
